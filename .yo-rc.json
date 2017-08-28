@@ -23,7 +23,9 @@
     "testFrameworks": [],
     "enableTranslation": true,
     "nativeLanguage": "es",
-    "languages": [],
+    "languages": [
+      "es"
+    ],
     "clientFramework": "angular1",
     "jhipsterVersion": "4.7.0",
     "packageFolder": "com/roni/reservasalas",
