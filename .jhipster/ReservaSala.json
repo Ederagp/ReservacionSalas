@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "sala",
+            "otherEntityName": "sala",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "reservaSala"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaHoraInicial",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaHoraFinal",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "Estado",
+            "fieldValues": "Reservada, Cancelada"
+        }
+    ],
+    "changelogDate": "20170829170750",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "reserva_sala",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
