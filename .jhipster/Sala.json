@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "reservaSala",
+            "otherEntityName": "reservaSala",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "sala"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ubicacion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "capacidad",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "equipamiento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "observaciones",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170829170316",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "sala",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

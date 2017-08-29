@@ -1,0 +1,9 @@
+{
+    "reservaSalasApp": {
+        "Estado" : {
+            "null": "",
+            "Reservada": "Reservada",
+            "Cancelada": "Cancelada"
+        }
+    }
+}

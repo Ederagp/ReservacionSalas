@@ -1,0 +1,27 @@
+{
+    "reservaSalasApp": {
+        "reservaSala" : {
+            "home": {
+                "title": "Reserva Salas",
+                "createLabel": "Crear nuevo Reserva Sala",
+                "createOrEditLabel": "Crear o editar Reserva Sala"
+            },
+            "created": "Un nuevo Reserva Sala ha sido creado con el identificador {{ param }}",
+            "updated": "Un Reserva Sala ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Reserva Sala ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Reserva Sala {{ id }}?"
+            },
+            "detail": {
+                "title": "Reserva Sala"
+            },
+            "titulo": "Titulo",
+            "fechaHoraInicial": "Fecha Hora Inicial",
+            "fechaHoraFinal": "Fecha Hora Final",
+            "descripcion": "Descripcion",
+            "estado": "Estado",
+            "sala": "Sala",
+            "user": "User"
+        }
+    }
+}

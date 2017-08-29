@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="reservaSalasApp.reservaSala.detail.title">Reserva Sala</span> {{vm.reservaSala.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="reservaSalasApp.reservaSala.titulo">Titulo</span></dt>
+        <dd>
+            <span>{{vm.reservaSala.titulo}}</span>
+        </dd>
+        <dt><span data-translate="reservaSalasApp.reservaSala.fechaHoraInicial">Fecha Hora Inicial</span></dt>
+        <dd>
+            <span>{{vm.reservaSala.fechaHoraInicial | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="reservaSalasApp.reservaSala.fechaHoraFinal">Fecha Hora Final</span></dt>
+        <dd>
+            <span>{{vm.reservaSala.fechaHoraFinal | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="reservaSalasApp.reservaSala.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.reservaSala.descripcion}}</span>
+        </dd>
+        <dt><span data-translate="reservaSalasApp.reservaSala.estado">Estado</span></dt>
+        <dd>
+            <span data-translate="{{'reservaSalasApp.Estado.' + vm.reservaSala.estado}}">{{vm.reservaSala.estado}}</span>
+        </dd>
+        <dt><span data-translate="reservaSalasApp.reservaSala.sala">Sala</span></dt>
+        <dd>
+            <a ui-sref="sala-detail({id:vm.reservaSala.sala.id})">{{vm.reservaSala.sala.nombre}}</a>
+        </dd>
+        <dt><span data-translate="reservaSalasApp.reservaSala.user">User</span></dt>
+        <dd>
+            {{vm.reservaSala.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="reserva-sala-detail.edit({id:vm.reservaSala.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
