@@ -26,20 +26,6 @@
               endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
               draggable: true,
               resizable: true
-            }, {
-              title: '<i class="glyphicon glyphicon-asterisk"></i> <span>Otra Reserva</span>',
-              color: calendarConfig.colorTypes.info,
-              startsAt: moment().subtract(1, 'day').toDate(),
-              endsAt: moment().add(5, 'days').toDate(),
-              draggable: true,
-              resizable: true
-            }, {
-              title: 'Proyección de pelicula...',
-              color: calendarConfig.colorTypes.success,
-              startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-              endsAt: moment().startOf('day').add(19, 'hours').toDate(),
-              draggable: true,
-              resizable: true
             }
         ];
 
