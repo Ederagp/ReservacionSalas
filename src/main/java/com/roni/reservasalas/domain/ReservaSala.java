@@ -5,7 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 import com.roni.reservasalas.domain.enumeration.Estado;
@@ -29,10 +29,10 @@ public class ReservaSala implements Serializable {
     private String titulo;
 
     @Column(name = "fecha_hora_inicial")
-    private LocalDate fechaHoraInicial;
+    private ZonedDateTime fechaHoraInicial;
 
     @Column(name = "fecha_hora_final")
-    private LocalDate fechaHoraFinal;
+    private ZonedDateTime fechaHoraFinal;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -69,29 +69,29 @@ public class ReservaSala implements Serializable {
         this.titulo = titulo;
     }
 
-    public LocalDate getFechaHoraInicial() {
+    public ZonedDateTime getFechaHoraInicial() {
         return fechaHoraInicial;
     }
 
-    public ReservaSala fechaHoraInicial(LocalDate fechaHoraInicial) {
+    public ReservaSala fechaHoraInicial(ZonedDateTime fechaHoraInicial) {
         this.fechaHoraInicial = fechaHoraInicial;
         return this;
     }
 
-    public void setFechaHoraInicial(LocalDate fechaHoraInicial) {
+    public void setFechaHoraInicial(ZonedDateTime fechaHoraInicial) {
         this.fechaHoraInicial = fechaHoraInicial;
     }
 
-    public LocalDate getFechaHoraFinal() {
+    public ZonedDateTime getFechaHoraFinal() {
         return fechaHoraFinal;
     }
 
-    public ReservaSala fechaHoraFinal(LocalDate fechaHoraFinal) {
+    public ReservaSala fechaHoraFinal(ZonedDateTime fechaHoraFinal) {
         this.fechaHoraFinal = fechaHoraFinal;
         return this;
     }
 
-    public void setFechaHoraFinal(LocalDate fechaHoraFinal) {
+    public void setFechaHoraFinal(ZonedDateTime fechaHoraFinal) {
         this.fechaHoraFinal = fechaHoraFinal;
     }
 

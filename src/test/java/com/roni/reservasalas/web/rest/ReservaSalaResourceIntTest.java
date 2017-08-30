@@ -21,7 +21,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -43,11 +45,11 @@ public class ReservaSalaResourceIntTest {
     private static final String DEFAULT_TITULO = "AAAAAAAAAA";
     private static final String UPDATED_TITULO = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_FECHA_HORA_INICIAL = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_FECHA_HORA_INICIAL = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_FECHA_HORA_INICIAL = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_FECHA_HORA_INICIAL = ZonedDateTime.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_FECHA_HORA_FINAL = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_FECHA_HORA_FINAL = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_FECHA_HORA_FINAL = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_FECHA_HORA_FINAL = ZonedDateTime.now(ZoneId.systemDefault());
 
     private static final String DEFAULT_DESCRIPCION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPCION = "BBBBBBBBBB";

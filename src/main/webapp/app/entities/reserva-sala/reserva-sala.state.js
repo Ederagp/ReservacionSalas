@@ -102,15 +102,15 @@
                     controller: 'ReservaSalaDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
                                 titulo: null,
-                                fechaHoraInicial: null,
-                                fechaHoraFinal: null,
+                                fechaHoraInicial: new Date(),
+                                fechaHoraFinal: new Date(),
                                 descripcion: null,
-                                estado: null,
+                                estado: 'Reservada',
                                 id: null
                             };
                         }

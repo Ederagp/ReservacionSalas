@@ -33,8 +33,8 @@
                 <tr ng-repeat="reservaSala in vm.reservaSalas track by reservaSala.id">
                     <td><a ui-sref="reserva-sala-detail({id:reservaSala.id})">{{reservaSala.id}}</a></td>
                     <td>{{reservaSala.titulo}}</td>
-                        <td>{{reservaSala.fechaHoraInicial | date:'mediumDate'}}</td>
-                        <td>{{reservaSala.fechaHoraFinal | date:'mediumDate'}}</td>
+                        <td>{{reservaSala.fechaHoraInicial | date:'dd/MM/yyyy hh:mm a'}}</td>
+                        <td>{{reservaSala.fechaHoraFinal | date:'dd/MM/yyyy hh:mm a'}}</td>
                     <td>{{reservaSala.descripcion}}</td>
                     <td data-translate="{{'reservaSalasApp.Estado.' + reservaSala.estado}}">{{reservaSala.estado}}</td>
                     <td>
@@ -118,11 +118,10 @@
         view-date="vm.viewDate"
         events="vm.reservas"
         view-title="vm.calendarTitle"
-        on-event-click="vm.eventClicked(calendarEvent)"
         cell-is-open="true"
         day-view-start="08:00"
         day-view-end="20:00"
         day-view-time-position="side"
-        on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd; vm.eventTimesChanged(calendarEvent)">
+        on-event-click="vm.eventClicked(calendarEvent);">
     </mwl-calendar>
 </div>

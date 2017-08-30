@@ -25,11 +25,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="fecha_hora_inicial" type="date">
+            <column name="fecha_hora_inicial" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
-            <column name="fecha_hora_final" type="date">
+            <column name="fecha_hora_final" type="timestamp">
                 <constraints nullable="true" />
             </column>
 

@@ -17,6 +17,7 @@
         vm.save = save;
         vm.salas = Sala.query();
         vm.users = User.query();
+        
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
