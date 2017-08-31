@@ -26,7 +26,6 @@
             ReservaSala.query(function(result) {
                 vm.reservaSalas = result;
                 vm.reservaSalas.forEach(function (value) {
-                    console.log(value);
                     vm.reservas.push(
                         {
                             title: value.sala.nombre + ', ' + 'Reservó: ' + value.user.firstName + '</br>' + '\"' + value.titulo + '\", ' + value.descripcion,
@@ -36,7 +35,6 @@
                         }
                     );
                 });
-                console.log(vm.reservas);
             });
         }
 

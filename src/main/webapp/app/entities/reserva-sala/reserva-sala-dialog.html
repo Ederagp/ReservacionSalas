@@ -8,6 +8,7 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
+        <jhi-alert></jhi-alert>
         <div class="form-group" ng-show="vm.reservaSala.id">
             <label for="id" data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
@@ -16,18 +17,11 @@
         <div class="form-group">
             <label class="control-label" data-translate="reservaSalasApp.reservaSala.titulo" for="field_titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="field_titulo"
-                    ng-model="vm.reservaSala.titulo"
+                    ng-model="vm.reservaSala.titulo" required
                     />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraInicial" for="field_fechaHoraInicial">Fecha Hora Inicial</label>
-                <!--<div class="input-group">
-                    <input id="field_fechaHoraInicial" type="text" class="form-control" name="fechaHoraInicial" uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraInicial" is-open="vm.datePickerOpenStatus.fechaHoraInicial"
-                    clear="Limpiar" close-text="Cerrar" current-text="Hoy"/>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraInicial')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>-->
             <div class="input-group">
                 <input id="field_fechaHoraInicial" name="fechaHoraInicial" type="text"
                 class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraInicial"
@@ -37,20 +31,13 @@
                         <i class="glyphicon glyphicon-calendar"></i>
                     </button>
                 </span>
-            </div>
-            <div class="" uib-timepicker ng-model="vm.reservaSala.fechaHoraInicial" hour-step="1"
-                minute-step="15" show-meridian="true">
+                <div class="" uib-timepicker ng-model="vm.reservaSala.fechaHoraInicial" hour-step="1"
+                minute-step="15" min="vm.min" max="vm.max" show-spinners="false" show-meridian="true">
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraFinal" for="field_fechaHoraFinal">Fecha Hora Final</label>
-                <!--<div class="input-group">
-                    <input id="field_fechaHoraFinal" type="text" class="form-control" name="fechaHoraFinal" uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraFinal" is-open="vm.datePickerOpenStatus.fechaHoraFinal"
-                    clear-text="Limpiar" close-text="Cerrar" current-text="Hoy" />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraFinal')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>-->
             <div class="input-group">
                 <input id="field_fechaHoraFinal" name="fechaHoraFinal" type="text"
                 class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraFinal"
@@ -60,9 +47,9 @@
                         <i class="glyphicon glyphicon-calendar"></i>
                     </button>
                 </span>
-            </div>
-            <div class="" uib-timepicker ng-model="vm.reservaSala.fechaHoraFinal" hour-step="1"
-                minute-step="15" show-meridian="true">
+                <div uib-timepicker ng-model="vm.reservaSala.fechaHoraFinal" hour-step="1"
+                minute-step="15" min="vm.min" max="vm.max" show-spinners="false" show-meridian="true">
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -81,7 +68,7 @@
 
         <div class="form-group">
             <label data-translate="reservaSalasApp.reservaSala.sala" for="field_sala">Sala</label>
-            <select class="form-control" id="field_sala" name="sala" ng-model="vm.reservaSala.sala" ng-options="sala as sala.nombre for sala in vm.salas track by sala.id">
+            <select class="form-control" id="field_sala" name="sala" required ng-model="vm.reservaSala.sala" ng-options="sala as sala.nombre for sala in vm.salas track by sala.id">
                 <option value=""></option>
             </select>
         </div>
