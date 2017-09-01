@@ -5,9 +5,9 @@
         .module('reservaSalasApp')
         .controller('ReservaSalaDialogController', ReservaSalaDialogController);
 
-    ReservaSalaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ReservaSala', 'Sala', 'User', 'AlertService', 'moment'];
+    ReservaSalaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ReservaSala', 'Sala', 'User', 'AlertService', 'moment', 'Principal'];
 
-    function ReservaSalaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ReservaSala, Sala, User, AlertService, moment) {
+    function ReservaSalaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ReservaSala, Sala, User, AlertService, moment, Principal) {
         var vm = this;
 
         vm.reservaSala = entity;
@@ -23,7 +23,13 @@
         vm.max = new Date();
         vm.max.setHours(20);
         vm.max.setMinutes(1);
-        
+
+
+        if (vm.reservaSala.id === null) {
+            Principal.identity().then(function (account) {
+                vm.reservaSala.user = account;
+            });
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -50,12 +56,24 @@
 
         function validaReserva() {
             vm.reservaSalas = [];
-            ReservaSala.query(function(result) {
+            //Se consultan todas las reservas de la sala seleccionada
+            ReservaSala.queryBySala({ id: vm.reservaSala.sala.id }, function(result) {
+            //ReservaSala.query(function(result) {
                 vm.reservaSalas = result;
+                console.log(result);
                 vm.reservaSalas.forEach(function (value) {
-                    if (moment(vm.reservaSala.fechaHoraInicial).isBetween(value.fechaHoraInicial, value.fechaHoraFinal) || moment(vm.reservaSala.fechaHoraFinal).isBetween(value.fechaHoraInicial, value.fechaHoraFinal)) {
-                        AlertService.error('Ya existe una reservación en el horario proporcionado.');
-                        vm.isSaving = false;
+                    console.log(vm.reservaSala.fechaHoraInicial);
+                    if (moment(value.fechaHoraInicial).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal, null, '[)')) {
+                        console.log(vm.reservaSala.fechaHoraInicial);
+                        if (moment(vm.reservaSala.fechaHoraInicial).isBetween(value.fechaHoraInicial, value.fechaHoraFinal) || moment(vm.reservaSala.fechaHoraFinal).isBetween(value.fechaHoraInicial, value.fechaHoraFinal)) {
+                            AlertService.error('Ya existe una reservación dentro del horario en la ' + vm.reservaSala.sala.nombre);
+                            vm.isSaving = false;
+                        } else {
+                            if (moment(value.fechaHoraInicial).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal) || moment(value.fechaHoraFinal).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal)) {
+                                AlertService.error('No puede reservar sobre un horario existente en la ' + vm.reservaSala.sala.nombre);
+                                vm.isSaving = false;
+                            }
+                        }
                     }
                 });
             });

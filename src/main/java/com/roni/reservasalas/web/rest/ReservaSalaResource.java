@@ -6,6 +6,7 @@ import com.roni.reservasalas.domain.ReservaSala;
 import com.roni.reservasalas.repository.ReservaSalaRepository;
 import com.roni.reservasalas.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,6 +91,20 @@ public class ReservaSalaResource {
         log.debug("REST request to get all ReservaSalas");
         return reservaSalaRepository.findAll();
         }
+
+    /**
+     * GET  /reserva-salas : get all the reservaSalasBetweenFechaInicial.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of reservaSalas in body
+     */
+    @GetMapping("/reserva-salas/sala/{id}")
+    @Timed
+    public List<ReservaSala> getAllReservaSalasBySala(@PathVariable Long id) {
+        log.debug("REST request to get all ReservaSalasBySala : {}", id);
+        List<ReservaSala> reservaSala = reservaSalaRepository.findAllBySalaId(id);
+
+        return reservaSala;
+    }
 
     /**
      * GET  /reserva-salas/:id : get the "id" reservaSala.

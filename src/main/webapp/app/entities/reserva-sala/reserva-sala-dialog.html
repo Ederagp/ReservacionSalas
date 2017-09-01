@@ -20,35 +20,37 @@
                     ng-model="vm.reservaSala.titulo" required
                     />
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraInicial" for="field_fechaHoraInicial">Fecha Hora Inicial</label>
-            <div class="input-group">
-                <input id="field_fechaHoraInicial" name="fechaHoraInicial" type="text"
-                class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraInicial"
-                is-open="vm.datePickerOpenStatus.fechaHoraInicial" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraInicial')">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                    </button>
-                </span>
-                <div class="" uib-timepicker ng-model="vm.reservaSala.fechaHoraInicial" hour-step="1"
-                minute-step="15" min="vm.min" max="vm.max" show-spinners="false" show-meridian="true">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraInicial" for="field_fechaHoraInicial">Fecha Hora Inicial</label>
+                <div class="input-group">
+                    <input id="field_fechaHoraInicial" name="fechaHoraInicial" type="text"
+                    class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraInicial"
+                    is-open="vm.datePickerOpenStatus.fechaHoraInicial" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraInicial')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+                <div uib-timepicker ng-model="vm.reservaSala.fechaHoraInicial" hour-step="1"
+                minute-step="15" min="vm.min" max="vm.max" mousewheel="false" show-meridian="true">
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraFinal" for="field_fechaHoraFinal">Fecha Hora Final</label>
-            <div class="input-group">
-                <input id="field_fechaHoraFinal" name="fechaHoraFinal" type="text"
-                class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraFinal"
-                is-open="vm.datePickerOpenStatus.fechaHoraFinal" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraFinal')">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                    </button>
-                </span>
+            <div class="form-group col-md-4 col-md-offset-1">
+                <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraFinal" for="field_fechaHoraFinal">Fecha Hora Final</label>
+                <div class="input-group">
+                    <input id="field_fechaHoraFinal" name="fechaHoraFinal" type="text"
+                    class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraFinal"
+                    is-open="vm.datePickerOpenStatus.fechaHoraFinal" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraFinal')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </div>
                 <div uib-timepicker ng-model="vm.reservaSala.fechaHoraFinal" hour-step="1"
-                minute-step="15" min="vm.min" max="vm.max" show-spinners="false" show-meridian="true">
+                minute-step="15" min="vm.min" max="vm.max" mousewheel="false" show-meridian="true">
                 </div>
             </div>
         </div>

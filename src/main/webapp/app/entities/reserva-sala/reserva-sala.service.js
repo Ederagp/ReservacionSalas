@@ -11,6 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'queryBySala': { method: 'GET', isArray: true, url: 'api/reserva-salas/sala/:id'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
