@@ -60,11 +60,8 @@
             ReservaSala.queryBySala({ id: vm.reservaSala.sala.id }, function(result) {
             //ReservaSala.query(function(result) {
                 vm.reservaSalas = result;
-                console.log(result);
                 vm.reservaSalas.forEach(function (value) {
-                    console.log(vm.reservaSala.fechaHoraInicial);
                     if (moment(value.fechaHoraInicial).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal)) {
-                        console.log(vm.reservaSala.fechaHoraInicial);
                         if (moment(vm.reservaSala.fechaHoraInicial).isBetween(value.fechaHoraInicial, value.fechaHoraFinal) || moment(vm.reservaSala.fechaHoraFinal).isBetween(value.fechaHoraInicial, value.fechaHoraFinal)) {
                             AlertService.error('Ya existe una reservación dentro del horario en la ' + vm.reservaSala.sala.nombre);
                             vm.isSaving = false;

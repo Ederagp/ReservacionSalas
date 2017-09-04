@@ -25,7 +25,6 @@
                     vm.actions = [{
                         label: '<i class="glyphicon glyphicon-ban-circle"></i>',
                         onClick: function (args) {
-                            console.log(args.calendarEvent);
                             $uibModal.open({
                                 templateUrl: 'app/entities/reserva-sala/reserva-sala-delete-dialog.html',
                                 controller: 'ReservaSalaDeleteController',
