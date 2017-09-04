@@ -10,7 +10,7 @@
             "updated": "Un Reserva Sala ha sido actualizado con el identificador {{ param }}",
             "deleted": "Un Reserva Sala ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Reserva Sala {{ id }}?"
+                "question": "¿Desea cancelar la Reserva con el Identificador {{ id }}?"
             },
             "detail": {
                 "title": "Reserva Sala"

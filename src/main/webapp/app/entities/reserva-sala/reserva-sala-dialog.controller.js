@@ -44,12 +44,12 @@
             if (vm.reservaSala.id !== null) {
                 validaReserva();
                 if (vm.isSaving) {
-                    //ReservaSala.update(vm.reservaSala, onSaveSuccess, onSaveError);
+                    ReservaSala.update(vm.reservaSala, onSaveSuccess, onSaveError);
                 }
             } else {
                 validaReserva();
                 if (vm.isSaving) {
-                    //ReservaSala.save(vm.reservaSala, onSaveSuccess, onSaveError);
+                    ReservaSala.save(vm.reservaSala, onSaveSuccess, onSaveError);
                 }
             }
         }
@@ -63,7 +63,7 @@
                 console.log(result);
                 vm.reservaSalas.forEach(function (value) {
                     console.log(vm.reservaSala.fechaHoraInicial);
-                    if (moment(value.fechaHoraInicial).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal, null, '[)')) {
+                    if (moment(value.fechaHoraInicial).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal)) {
                         console.log(vm.reservaSala.fechaHoraInicial);
                         if (moment(vm.reservaSala.fechaHoraInicial).isBetween(value.fechaHoraInicial, value.fechaHoraFinal) || moment(vm.reservaSala.fechaHoraFinal).isBetween(value.fechaHoraInicial, value.fechaHoraFinal)) {
                             AlertService.error('Ya existe una reservación dentro del horario en la ' + vm.reservaSala.sala.nombre);

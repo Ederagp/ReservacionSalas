@@ -19,10 +19,16 @@
         }
 
         function confirmDelete (id) {
-            ReservaSala.delete({id: id},
+            vm.reservaSala.estado = 'Cancelada';
+            ReservaSala.update(vm.reservaSala, onSaveSuccess);
+            /*ReservaSala.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
-                });
+                });*/
+        }
+
+        function onSaveSuccess (result) {
+            $uibModalInstance.close(result);    
         }
     }
 })();
