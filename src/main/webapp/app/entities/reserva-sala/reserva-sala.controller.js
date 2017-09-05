@@ -23,7 +23,7 @@
             account.authorities.forEach(function (valor){
                 if (valor === 'ROLE_ADMIN') {
                     vm.actions = [{
-                        label: '<i class="glyphicon glyphicon-ban-circle"></i>',
+                        label: '<i class="glyphicon glyphicon-remove"></i>',
                         onClick: function (args) {
                             $uibModal.open({
                                 templateUrl: 'app/entities/reserva-sala/reserva-sala-delete-dialog.html',

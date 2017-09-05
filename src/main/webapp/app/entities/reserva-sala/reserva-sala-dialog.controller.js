@@ -23,6 +23,7 @@
         vm.max = new Date();
         vm.max.setHours(20);
         vm.max.setMinutes(1);
+        vm.reservaSalas = [];
 
 
         if (vm.reservaSala.id === null) {
@@ -39,40 +40,43 @@
             $uibModalInstance.dismiss('cancel');
         }
 
-        function save () {
+        function save() {
             vm.isSaving = true;
-            if (vm.reservaSala.id !== null) {
-                validaReserva();
-                if (vm.isSaving) {
-                    ReservaSala.update(vm.reservaSala, onSaveSuccess, onSaveError);
+            //Se consultan todas las reservas de la sala seleccionada
+            ReservaSala.queryBySala({ id: vm.reservaSala.sala.id }, function (result) {
+                vm.reservaSalas = result;
+                if (vm.reservaSala.id !== null) {
+                    validaReserva();
+                    if (vm.isSaving) {
+                        ReservaSala.update(vm.reservaSala, onSaveSuccess, onSaveError);
+                    }
+                } else {
+                    validaReserva();
+                    if (vm.isSaving) {
+                        ReservaSala.save(vm.reservaSala, onSaveSuccess, onSaveError);
+                    }
                 }
-            } else {
-                validaReserva();
-                if (vm.isSaving) {
-                    ReservaSala.save(vm.reservaSala, onSaveSuccess, onSaveError);
-                }
-            }
+            });
         }
 
         function validaReserva() {
-            vm.reservaSalas = [];
-            //Se consultan todas las reservas de la sala seleccionada
-            ReservaSala.queryBySala({ id: vm.reservaSala.sala.id }, function(result) {
-            //ReservaSala.query(function(result) {
-                vm.reservaSalas = result;
-                vm.reservaSalas.forEach(function (value) {
-                    if (moment(value.fechaHoraInicial).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal)) {
-                        if (moment(vm.reservaSala.fechaHoraInicial).isBetween(value.fechaHoraInicial, value.fechaHoraFinal) || moment(vm.reservaSala.fechaHoraFinal).isBetween(value.fechaHoraInicial, value.fechaHoraFinal)) {
+            console.log(vm.reservaSalas);
+            var fromDate = moment(vm.reservaSala.fechaHoraInicial).format();
+            var toDate = moment(vm.reservaSala.fechaHoraFinal).format();
+            vm.reservaSalas.forEach(function (value) {
+                if (vm.isSaving) {
+                    if (moment(value.fechaHoraInicial).isBetween(fromDate, toDate)) {
+                        if (moment(fromDate).isBetween(value.fechaHoraInicial, value.fechaHoraFinal) || moment(toDate).isBetween(value.fechaHoraInicial, value.fechaHoraFinal)) {
                             AlertService.error('Ya existe una reservación dentro del horario en la ' + vm.reservaSala.sala.nombre);
                             vm.isSaving = false;
                         } else {
-                            if (moment(value.fechaHoraInicial).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal) || moment(value.fechaHoraFinal).isBetween(vm.reservaSala.fechaHoraInicial, vm.reservaSala.fechaHoraFinal)) {
+                            if (moment(value.fechaHoraInicial).isBetween(fromDate, toDate) || moment(value.fechaHoraFinal).isBetween(fromDate, toDate)) {
                                 AlertService.error('No puede reservar sobre un horario existente en la ' + vm.reservaSala.sala.nombre);
                                 vm.isSaving = false;
                             }
                         }
                     }
-                });
+                }
             });
         }
 
