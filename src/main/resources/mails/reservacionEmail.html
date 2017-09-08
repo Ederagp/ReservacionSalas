@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+       <title >Reservación</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   </head>
+   <body>
+        <p>
+            Estimado(a) Usuario,
+            <br/>
+            <span th:text="${#locale.country}"></span>
+            <strong th:text="${reservaSala.user.firstName}"></strong>
+        </p>
+        <p>
+            Ha registrado la siguiente reserva.
+        </p>
+        <br/>
+        <span>Sala: </span><strong th:text="${reservaSala.sala.nombre}"></strong>
+        <br/>
+        <span>Horario: </span><strong th:text="${fechaInicial}"></strong><span> a </span><strong th:text="${fechaFinal}"></strong>
+        <br/>
+        <span>Título: </span><strong th:text="${reservaSala.titulo}"></strong>
+        <br/>
+        <span>Descripción: </span><strong th:text="${reservaSala.descripcion}"></strong>
+        <p>
+            <br/>
+            El número de Identificador de su reservación es: <strong th:text="${reservaSala.id}"></strong>
+        </p>
+        <p>
+            <br/>
+            Para cancelar la reservación envie un correo electrónico al administrador del sistema
+            <br/>
+            indicando el indentificador proporcionado y el motivo de la cancelación.
+        </p>
+        <p>
+           <span>Saludos, </span>
+           <br/>
+           <em>Equipo de Reservaciones.</em>
+        </p>
+   </body>
+</html>

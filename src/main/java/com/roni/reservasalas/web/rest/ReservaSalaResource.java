@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.roni.reservasalas.domain.ReservaSala;
 
 import com.roni.reservasalas.repository.ReservaSalaRepository;
+import com.roni.reservasalas.service.MailService;
 import com.roni.reservasalas.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 
@@ -14,11 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +30,12 @@ public class ReservaSalaResource {
     private static final String ENTITY_NAME = "reservaSala";
 
     private final ReservaSalaRepository reservaSalaRepository;
-    public ReservaSalaResource(ReservaSalaRepository reservaSalaRepository) {
+
+    private final MailService mailService;
+
+    public ReservaSalaResource(ReservaSalaRepository reservaSalaRepository, MailService mailService) {
         this.reservaSalaRepository = reservaSalaRepository;
+        this.mailService = mailService;
     }
 
     /**
@@ -53,6 +53,7 @@ public class ReservaSalaResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new reservaSala cannot already have an ID")).body(null);
         }
         ReservaSala result = reservaSalaRepository.save(reservaSala);
+        mailService.sendReservacionMail(result);
         return ResponseEntity.created(new URI("/api/reserva-salas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
