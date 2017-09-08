@@ -84,6 +84,7 @@
             $scope.$emit('reservaSalasApp:reservaSalaUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
+            AlertService.info("Se ha enviado la reservación a su Correo Electrónico.");
         }
 
         function onSaveError () {

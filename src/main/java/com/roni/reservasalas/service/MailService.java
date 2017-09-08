@@ -1,5 +1,6 @@
 package com.roni.reservasalas.service;
 
+import com.roni.reservasalas.domain.ReservaSala;
 import com.roni.reservasalas.domain.User;
 
 import io.github.jhipster.config.JHipsterProperties;
@@ -16,6 +17,9 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import javax.mail.internet.MimeMessage;
+
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 /**
@@ -102,4 +106,18 @@ public class MailService {
         log.debug("Sending password reset email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "passwordResetEmail", "email.reset.title");
     }
-}
+
+    @Async
+    public void sendReservacionMail(ReservaSala reservaSala) {
+        log.debug("Sending cotizacion e-mail to '{}'", reservaSala.getUser().getEmail());
+        Locale locale = Locale.forLanguageTag("es");
+        Context context = new Context(locale);
+        context.setVariable("reservaSala", reservaSala);
+        context.setVariable("fechaInicial", reservaSala.getFechaHoraInicial().format(DateTimeFormatter.ofPattern("dd/MM/YYYY hh:mm a").withZone(ZoneId.systemDefault())));
+        context.setVariable("fechaFinal", reservaSala.getFechaHoraFinal().format(DateTimeFormatter.ofPattern("dd/MM/YYYY hh:mm a").withZone(ZoneId.systemDefault())));
+        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        String content = templateEngine.process("reservacionEmail", context);
+        String subject = messageSource.getMessage("email.send.title", null, locale);
+        sendEmail(reservaSala.getUser().getEmail(), subject, content, false, true);
+    }
+} 
