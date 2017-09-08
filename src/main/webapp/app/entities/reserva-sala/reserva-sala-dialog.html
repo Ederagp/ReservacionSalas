@@ -1,9 +1,7 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
-
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
+            ng-click="vm.clear()">&times;</button>
         <h4 class="modal-title" id="myReservaSalaLabel" data-translate="reservaSalasApp.reservaSala.home.createOrEditLabel">Create or edit a Reserva Sala</h4>
     </div>
     <div class="modal-body">
@@ -12,21 +10,25 @@
         <div class="form-group" ng-show="vm.reservaSala.id">
             <label for="id" data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.reservaSala.id" readonly />
+                ng-model="vm.reservaSala.id" readonly />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="reservaSalasApp.reservaSala.titulo" for="field_titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" id="field_titulo"
-                    ng-model="vm.reservaSala.titulo" required
-                    />
+                ng-model="vm.reservaSala.titulo" required/>
+            <div ng-show="editForm.titulo.$invalid">
+                <p class="help-block" ng-show="editForm.titulo.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
                 <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraInicial" for="field_fechaHoraInicial">Fecha Hora Inicial</label>
                 <div class="input-group">
                     <input id="field_fechaHoraInicial" name="fechaHoraInicial" type="text"
-                    class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraInicial"
-                    is-open="vm.datePickerOpenStatus.fechaHoraInicial" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
+                        class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraInicial"
+                        is-open="vm.datePickerOpenStatus.fechaHoraInicial" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraInicial')">
                             <i class="glyphicon glyphicon-calendar"></i>
@@ -34,15 +36,15 @@
                     </span>
                 </div>
                 <div uib-timepicker ng-model="vm.reservaSala.fechaHoraInicial" hour-step="1"
-                minute-step="15" min="vm.min" max="vm.max" mousewheel="false" show-meridian="true">
+                    minute-step="15" min="vm.min" max="vm.max" mousewheel="false" show-meridian="true">
                 </div>
             </div>
             <div class="form-group col-md-4 col-md-offset-1">
                 <label class="control-label" data-translate="reservaSalasApp.reservaSala.fechaHoraFinal" for="field_fechaHoraFinal">Fecha Hora Final</label>
                 <div class="input-group">
                     <input id="field_fechaHoraFinal" name="fechaHoraFinal" type="text"
-                    class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraFinal"
-                    is-open="vm.datePickerOpenStatus.fechaHoraFinal" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
+                        class="form-control" readonly uib-datepicker-popup="{{dateformat}}" ng-model="vm.reservaSala.fechaHoraFinal"
+                        is-open="vm.datePickerOpenStatus.fechaHoraFinal" clear-text="Limpiar" close-text="Cerrar" current-text="Hoy"/>
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaHoraFinal')">
                             <i class="glyphicon glyphicon-calendar"></i>
@@ -50,31 +52,34 @@
                     </span>
                 </div>
                 <div uib-timepicker ng-model="vm.reservaSala.fechaHoraFinal" hour-step="1"
-                minute-step="15" min="vm.min" max="vm.max" mousewheel="false" show-meridian="true">
+                    minute-step="15" min="vm.min" max="vm.max" mousewheel="false" show-meridian="true">
                 </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="reservaSalasApp.reservaSala.descripcion" for="field_descripcion">Descripcion</label>
             <input type="text" class="form-control" name="descripcion" id="field_descripcion"
-                    ng-model="vm.reservaSala.descripcion"
-                    />
+                ng-model="vm.reservaSala.descripcion"/>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-show="false">
             <label class="control-label" data-translate="reservaSalasApp.reservaSala.estado" for="field_estado">Estado</label>
             <select class="form-control" name="estado" ng-model="vm.reservaSala.estado" id="field_estado">
                 <option value="Reservada" data-translate="reservaSalasApp.Estado.Reservada">Reservada</option>
                 <option value="Cancelada" data-translate="reservaSalasApp.Estado.Cancelada">Cancelada</option>
             </select>
         </div>
-
         <div class="form-group">
             <label data-translate="reservaSalasApp.reservaSala.sala" for="field_sala">Sala</label>
             <select class="form-control" id="field_sala" name="sala" required ng-model="vm.reservaSala.sala" ng-options="sala as sala.nombre for sala in vm.salas track by sala.id">
                 <option value=""></option>
             </select>
+            <div ng-show="editForm.sala.$invalid">
+                <p class="help-block" ng-show="editForm.sala.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-show="false">
             <label data-translate="reservaSalasApp.reservaSala.user" for="field_user">User</label>
             <select class="form-control" id="field_user" name="user" ng-model="vm.reservaSala.user" ng-options="user as user.login for user in vm.users track by user.id">
                 <option value=""></option>

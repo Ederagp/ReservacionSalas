@@ -1,22 +1,20 @@
 <div>
-    <h2 data-translate="reservaSalasApp.reservaSala.home.title">Reserva Salas</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="reserva-sala.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="reservaSalasApp.reservaSala.home.createLabel">
-                        Create new Reserva Sala
-                    </span>
-                </button>
-            </div>
+            <h2 class="col-md-3" data-translate="reservaSalasApp.reservaSala.home.title">Reserva Salas</h2>
+            <button class="btn btn-default col-md-3 col-md-push-6" ui-sref="reserva-sala.new" >
+                <span class="glyphicon glyphicon-plus"></span>
+                <span  data-translate="reservaSalasApp.reservaSala.home.createLabel">
+                    Create new Reserva Sala
+                </span>
+            </button>
         </div>
     </div>
     <br/>
-    <div class="table-responsive">
+    <div class="table-responsive" has-authority="ROLE_ADMIN">
         <table class="jh-table table table-striped">
-            <thead>
+             <thead>
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="reservaSalasApp.reservaSala.titulo">Titulo</span></th>
@@ -33,8 +31,8 @@
                 <tr ng-repeat="reservaSala in vm.reservaSalas track by reservaSala.id">
                     <td><a ui-sref="reserva-sala-detail({id:reservaSala.id})">{{reservaSala.id}}</a></td>
                     <td>{{reservaSala.titulo}}</td>
-                        <td>{{reservaSala.fechaHoraInicial | date:'dd/MM/yyyy hh:mm a'}}</td>
-                        <td>{{reservaSala.fechaHoraFinal | date:'dd/MM/yyyy hh:mm a'}}</td>
+                    <td>{{reservaSala.fechaHoraInicial | date:'dd/MM/yyyy hh:mm a'}}</td>
+                    <td>{{reservaSala.fechaHoraFinal | date:'dd/MM/yyyy hh:mm a'}}</td>
                     <td>{{reservaSala.descripcion}}</td>
                     <td data-translate="{{'reservaSalasApp.Estado.' + reservaSala.estado}}">{{reservaSala.estado}}</td>
                     <td>
@@ -74,34 +72,34 @@
         <div class="col-md-6 text-center">
             <div class="btn-group">
                 <button
-                  class="btn btn-raised btn-info"
-                  mwl-date-modifier
-                  date="vm.viewDate"
-                  decrement="vm.calendarView"
-                  ng-click="vm.cellIsOpen = false">
-                  Anterior
+                    class="btn btn-raised btn-info"
+                    mwl-date-modifier
+                    date="vm.viewDate"
+                    decrement="vm.calendarView"
+                    ng-click="vm.cellIsOpen = false">
+                    Anterior
                 </button>
                 <button
-                  class="btn btn-raised btn-default"
-                  mwl-date-modifier
-                  date="vm.viewDate"
-                  set-to-today
-                  ng-click="vm.cellIsOpen = false">
-                  Hoy
+                    class="btn btn-raised btn-default"
+                    mwl-date-modifier
+                    date="vm.viewDate"
+                    set-to-today
+                    ng-click="vm.cellIsOpen = false">
+                    Hoy
                 </button>
                 <button
-                  class="btn btn-raised btn-info"
-                  mwl-date-modifier
-                  date="vm.viewDate"
-                  increment="vm.calendarView"
-                  ng-click="vm.cellIsOpen = false">
-                  Siguiente
+                    class="btn btn-raised btn-info"
+                    mwl-date-modifier
+                    date="vm.viewDate"
+                    increment="vm.calendarView"
+                    ng-click="vm.cellIsOpen = false">
+                    Siguiente
                 </button>
             </div>
         </div>
-        
+            
         <br class="visible-xs visible-sm">
-        
+            
         <div class="col-md-6 text-center">
             <div class="btn-group">
                 <label class="btn btn-raised btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Año</label>
@@ -110,7 +108,7 @@
                 <label class="btn btn-raised btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Día</label>
             </div>
         </div>
-        
+            
     </div>
     </br>
     <mwl-calendar

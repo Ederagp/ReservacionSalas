@@ -2,23 +2,23 @@
     "reservaSalasApp": {
         "reservaSala" : {
             "home": {
-                "title": "Reserva Salas",
-                "createLabel": "Crear nuevo Reserva Sala",
-                "createOrEditLabel": "Crear o editar Reserva Sala"
+                "title": "Reservaciones",
+                "createLabel": "Crear nueva Reservación",
+                "createOrEditLabel": "Crear o editar Reservación"
             },
-            "created": "Un nuevo Reserva Sala ha sido creado con el identificador {{ param }}",
-            "updated": "Un Reserva Sala ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Reserva Sala ha sido eliminado con el identificador {{ param }}",
+            "created": "Una nueva Reservación ha sido creada con el identificador {{ param }}",
+            "updated": "La Reservación ha sido actualizada con el identificador {{ param }}",
+            "deleted": "La Reservación ha sido eliminada con el identificador {{ param }}",
             "delete": {
                 "question": "¿Desea cancelar la Reserva con el Identificador {{ id }}?"
             },
             "detail": {
-                "title": "Reserva Sala"
+                "title": "Reservación"
             },
-            "titulo": "Titulo",
-            "fechaHoraInicial": "Fecha Hora Inicial",
-            "fechaHoraFinal": "Fecha Hora Final",
-            "descripcion": "Descripcion",
+            "titulo": "Título",
+            "fechaHoraInicial": "Fecha y Hora Inicial",
+            "fechaHoraFinal": "Fecha y Hora Final",
+            "descripcion": "Descripción",
             "estado": "Estado",
             "sala": "Sala",
             "user": "User"
